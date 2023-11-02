@@ -43,5 +43,5 @@ class Students():
 
 names = ['john', 'andy', 'kim', 'park']
 x = Students(names)
-print(x)
 print(len(x))
+print(x)
