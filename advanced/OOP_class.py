@@ -63,9 +63,9 @@ print(x2.origin) # KOREA
 
 class Dog():
 
-    def __init__(self, name, type):
+    def __init__(self, name, breed):
         self.name = name 
-        self.type = type
+        self.breed = breed
 
 dog1 = Dog("Hans", "저먼 셰퍼드")
 dog2 = Dog("Lou", "레브라도")
