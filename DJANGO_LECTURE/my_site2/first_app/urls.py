@@ -10,7 +10,9 @@ urlpatterns = [
     # path('finance/', views.finance_view) #http://127.0.0.1:8000/first_app/finance/
     
     # 동적 url 라우팅 설정 
-    path('<str:topic>/', views.news_view) # string 타입 설정, 비워두면 모든타입 
-    , 
-    path('<int:num1>/<int:num2>', views.add_view)
+    path('<int:num_page>/', views.num_page_view) # 페이지 번호별 url 설정 연결 
+    # , path('<str:topic>', views.news_view) # string 타입 설정, 비워두면 모든타입 
+    , path('<str:topic>/', views.news_view, name='topic-page') # url name 지정
+    # , path('<int:num1>/<int:num2>', views.add_view)
+
 ]

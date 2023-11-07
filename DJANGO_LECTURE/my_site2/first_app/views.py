@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http.response import HttpResponse, Http404, HttpResponseNotFound
+from django.http.response import HttpResponse, Http404, HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 
 
@@ -26,3 +27,15 @@ def add_view(request, num1, num2):
     addrst = num1 + num2 
     result = f"{num1} + {num2} = {addrst}"
     return HttpResponse(str(result)) 
+
+# 리다이렉트 
+# domain.com/first_app/0 ---> domain.com/first_app/sports 
+def num_page_view(request, num_page):
+    topic_list = list(articles.keys())
+    topic = topic_list[num_page]
+    print(f"======={topic}=======")
+    #리다이렉트 
+    # return HttpResponseRedirect(topic) # hard cording 
+
+    return HttpResponseRedirect(reverse('topic-page', args=[topic]))
+
