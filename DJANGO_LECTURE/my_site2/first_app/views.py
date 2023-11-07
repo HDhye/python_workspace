@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, Http404, HttpResponseNotFound
 # Create your views here.
 
 
@@ -15,7 +15,11 @@ articles = {
 }
 
 def news_view(request, topic):
-    return HttpResponse(articles[topic])
+    try: 
+        result = articles[topic]
+        return HttpResponse(result)
+    except:
+        raise Http404("404") # 404.html 템플릿, 배포시 debug false설정하기  
 
 def add_view(request, num1, num2):
     # domain.com/first_app/num1/num2 --> num1+num2 
