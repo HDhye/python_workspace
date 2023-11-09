@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+
+{% extends "base.html" %}
+    {% block content %}
+        <h1>블록 내부 in Example.html</h1>
+
+    {% endblock %}
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,4 +17,7 @@
     {# {% url '앱이름 : url이름'%} #}
     <h1>URL TAG <a href="{% url 'my_app:variable' %}">Click go to Variable</a></h1>
 </body>
-</html>
+</html> -->
+
+
+

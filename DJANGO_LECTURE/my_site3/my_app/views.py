@@ -18,4 +18,3 @@ def variable_view(request):
 
     # context 렌더링 전달 
     return render(request, 'my_app/variable.html', context=my_var)
-    return render(request, 'my_app/variable.html')
