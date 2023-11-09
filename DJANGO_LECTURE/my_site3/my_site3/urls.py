@@ -21,3 +21,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("my_app/", include('my_app.urls')),
 ]
+
+# 에러 핸들러 등록
+handler404 = 'my_site3.views.my_custom_page_not_found_view'
