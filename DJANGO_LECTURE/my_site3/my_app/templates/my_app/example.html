@@ -1,8 +1,16 @@
 
 {% extends "base.html" %}
-    {% block content %}
-        <h1>블록 내부 in Example.html</h1>
 
+{# 정적 파일 로드 #}
+{% load static %}
+
+    {% block content %}
+    <h1>블록 내부 in Example.html</h1>
+    {# {% url '앱이름 : url이름'%} #}
+     <h1>URL TAG <a href="{% url 'my_app:variable' %}">Click go to Variable</a></h1>
+
+    <img src="{% static "my_app/image1.png" %}" alt='my_image'>
+    
     {% endblock %}
 
 <!-- <!DOCTYPE html>
