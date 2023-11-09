@@ -9,8 +9,8 @@ def variable_view(request):
 
     # dictionary 
     my_var = {
-        'first_name':'Rosalind',
-        'last_name': 'Franklin',
+        'first_name':'rosaLind',
+        'last_name': 'franklyn',
         'some_list': [1, 2, 3],
         'some_dict': {'inside_key':'inside_value'}
     }
