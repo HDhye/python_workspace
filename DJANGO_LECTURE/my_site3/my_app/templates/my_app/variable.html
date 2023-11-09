@@ -9,12 +9,48 @@
     <h1>VARIABLE.HTML</h1>
 
     <!-- 전달된 context 사용 -->
-    {% comment %} 템플릿 레벨 필터 | {% endcomment %}
+    <!--  템플릿 레벨 필터 | -->
     <h2>성은 {{first_name | lower | capfirst}} 이고 이름은 {{last_name | capfirst}} 입니다. </h2> 
     <h2>{{some_list}}</h2>
     <!-- indexing -->
     <h3>list index 0의 값은? {{some_list.0}}</h3>
     <h2>{{some_dict.inside_key}}</h2>
     <h2>django context 주석은 { # 내용 # } {# 이건 주석 #}</h2>
+
+    <!-- TAG -->
+    <h2>{{some_list}}</h2>
+
+        <h3> TAG - for </h3>
+            <ul>
+            {%  for item in some_list %}
+                <li>{{item}}</li>
+            <!-- 종료를 알림-->
+            {% endfor %}
+            </ul>
+            <ul>
+                {%  for k, v in some_dict.items %}
+                    <li>{{v}}</li>
+                <!-- 종료를 알림-->
+                {% endfor %}
+            </ul>
+
+        <h3> TAG - if, elif, else <h3>
+            {% if user_logged_in %}
+                Welcome back you are logged in
+
+            {% endif %}
+            <ul>
+                {% for num in some_list %}
+                    {% if num == 2 %}
+                        <li>TWO</li>
+                    {% else %}
+                        <li> {{num}}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if user_logged_in %}
+                <h3> Welcome {{first_name | upper}} !
+            {% endif %}
+
 </body>
 </html>
