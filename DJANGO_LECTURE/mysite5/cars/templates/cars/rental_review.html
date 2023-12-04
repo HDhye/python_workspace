@@ -30,7 +30,10 @@
                 <div class="mb-4">
                     {{ item.label_tag}} {{item}}
                 </div>
-            {% endfor %}
+            
+                {{item.errors}}
+
+                {% endfor %}
     
             
             <input type="submit" >

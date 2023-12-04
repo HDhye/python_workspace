@@ -10,7 +10,9 @@ def rental_review(request):
         
         if form.is_valid():  # 유효한 폼인지 확인 
             #{'first_name:'Jose',}
-            print(form.cleaned_data)
+            # print(form.cleaned_data)
+            
+            form.save()  # 모델 인스턴스로 전달된 폼 데이터 저장           
         
             # redirect
             return redirect(reverse('cars:thank_you'))    
