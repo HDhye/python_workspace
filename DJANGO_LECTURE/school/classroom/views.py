@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy  
 
 # 폼뷰를 일반뷰(generic view)로 임포트 
-from django.views.generic import TemplateView, FormView, CreateView, ListView
+from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView
 
 # 폼을 뷰에 임포트 
 from classroom.forms import ContactForm
@@ -38,7 +38,8 @@ class ContractFromView(FormView):
         # ContactForm(request.POST)
         return super().form_valid(form)    
     
-    
+
+# Create View 
 class TeacherCreateView(CreateView):
     model = Teacher # 사용 모델  
     
@@ -46,6 +47,7 @@ class TeacherCreateView(CreateView):
     fields = "__all__"
     success_url = reverse_lazy("classroom:thank_you")
     
+# List View 
 class TeacherListView(ListView):
     # model_list.html
     model = Teacher # 모델 인스턴스 연결 
@@ -53,5 +55,16 @@ class TeacherListView(ListView):
     queryset = Teacher.objects.order_by('first_name') # 정렬 
     
     context_object_name = 'teacher_list' # 뷰에 전달될 컨텍스트 네이밍 
+    
+
+# Detail View 
+class TeacherDetailView(DetailView):
+    # 하나의 모델 아이템만 반환
+    
+    # model_detail.html
+    model = Teacher 
+    
+    # pk --> {{ teacher }}
+     
     
     
