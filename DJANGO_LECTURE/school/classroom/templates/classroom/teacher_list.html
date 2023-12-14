@@ -5,8 +5,8 @@
 
         <li>
             <a href="/classroom/detail_teacher/{{teacher.id}}">{{teacher.first_name}} {{teacher.last_name}}</a>
-            <a href="/classroom/update_teacher/{{teacher.id}}"><button>정보수정</button></a>
-
+            <a href="/classroom/update_teacher/{{teacher.id}}"><button>수정</button></a>
+            <a href="/classroom/delete_teacher/{{teacher.id}}"><button>삭제</button></a>
         </li>
     {% endfor %}
 </ul>
