@@ -2,12 +2,12 @@ from django.shortcuts import render
 from django.urls import reverse_lazy  
 
 # 폼뷰를 일반뷰(generic view)로 임포트 
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, CreateView, ListView
 
 # 폼을 뷰에 임포트 
 from classroom.forms import ContactForm
-
-
+from classroom.models import Teacher 
+ 
 # Create your views here.
 
 # 함수 기반 뷰 
@@ -28,6 +28,7 @@ class ContractFromView(FormView):
     template_name = 'classroom/contact.html' # 폼을 보내는 템플릿 네임
     
     # success URL(이동하려는 주소 - 템플릿 아님)
+    # success_url = '/classroom/thank_you/' 
     success_url = reverse_lazy('classroom:thank_you') #thankyou.html
     
     # what to do with Form
@@ -37,5 +38,20 @@ class ContractFromView(FormView):
         # ContactForm(request.POST)
         return super().form_valid(form)    
     
+    
+class TeacherCreateView(CreateView):
+    model = Teacher # 사용 모델  
+    
+    # 모델뷰에서는 submit 버튼을 누르면 save() 동작을 한다.
+    fields = "__all__"
+    success_url = reverse_lazy("classroom:thank_you")
+    
+class TeacherListView(ListView):
+    # model_list.html
+    model = Teacher # 모델 인스턴스 연결 
+    # 쿼리속성 재정의(오버라이드)
+    queryset = Teacher.objects.order_by('first_name') # 정렬 
+    
+    context_object_name = 'teacher_list' # 뷰에 전달될 컨텍스트 네이밍 
     
     
