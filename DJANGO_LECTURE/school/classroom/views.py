@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy  
 
 # 폼뷰를 일반뷰(generic view)로 임포트 
-from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView
+from django.views.generic import (TemplateView, FormView, 
+CreateView, ListView, DetailView, UpdateView)
 
 # 폼을 뷰에 임포트 
 from classroom.forms import ContactForm
@@ -66,5 +67,14 @@ class TeacherDetailView(DetailView):
     
     # pk --> {{ teacher }}
      
+# Update View 
+class TeacherUpdateView(UpdateView):
+    model = Teacher 
+    
+    # fields = "__all__" # 전체 가져오기 
+    fields = ['last_name', 'subject'] # 이름과 과목만 수정 가능 
+    
+    success_url = reverse_lazy("classroom:list_teacher")
+    
     
     
